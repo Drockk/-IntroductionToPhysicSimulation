@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn546hwtahfsg"]
+
+[ext_resource type="Script" path="res://SLider.gd" id="1_m7d1i"]
+
+[sub_resource type="Environment" id="Environment_n7t86"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0sgrh"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_m7d1i")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7t86")
+camera_attributes = SubResource("CameraAttributesPractical_0sgrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+current = true
+
+[node name="box" type="CSGBox3D" parent="."]
+
+[node name="slider1" type="HSlider" parent="."]
+offset_right = 329.0
+offset_bottom = 16.0

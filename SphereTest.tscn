@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddrswc1gyo7wn"]
+
+[ext_resource type="Script" path="res://SphereTest.gd" id="1_qqwco"]
+
+[sub_resource type="Sky" id="Sky_old2e"]
+
+[sub_resource type="Environment" id="Environment_tvl1h"]
+background_color = Color(0.886275, 0, 0.737255, 1)
+sky = SubResource("Sky_old2e")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_2lgam"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_qqwco")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tvl1h")
+camera_attributes = SubResource("CameraAttributesPhysical_2lgam")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
