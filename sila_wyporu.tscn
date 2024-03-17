@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dekae3bxpli50"]
+
+[ext_resource type="Script" path="res://CSGSphere3D.gd" id="1_5wc0m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d8mel"]
+
+[sub_resource type="Sky" id="Sky_omods"]
+sky_material = SubResource("ProceduralSkyMaterial_d8mel")
+
+[sub_resource type="Environment" id="Environment_68pbh"]
+background_mode = 2
+sky = SubResource("Sky_omods")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xdjg7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_68pbh")
+camera_attributes = SubResource("CameraAttributesPractical_xdjg7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+script = ExtResource("1_5wc0m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+current = true
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 0)
+script = ExtResource("1_5wc0m")

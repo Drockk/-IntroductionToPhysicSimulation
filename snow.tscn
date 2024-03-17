@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsv51kfgqqqks"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a8w7e"]
+
+[sub_resource type="Sky" id="Sky_bfdsu"]
+sky_material = SubResource("ProceduralSkyMaterial_a8w7e")
+
+[sub_resource type="Environment" id="Environment_he6o5"]
+background_mode = 2
+sky = SubResource("Sky_bfdsu")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dd5dm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1mbnd"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 0, 100)
+direction = Vector3(0, 0, 0)
+spread = 60.0
+initial_velocity_min = -4.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.1
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_yrcwx"]
+radius = 0.25
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_he6o5")
+camera_attributes = SubResource("CameraAttributesPractical_dd5dm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.872786, 0.488103, 0, -0.488103, 0.872786, 0, 10, 110)
+current = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 400
+lifetime = 8.0
+process_material = SubResource("ParticleProcessMaterial_1mbnd")
+draw_pass_1 = SubResource("SphereMesh_yrcwx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+size = Vector3(200, 0.01, 200)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CSGBox3D"]
+size = Vector3(200, 2, 200)
